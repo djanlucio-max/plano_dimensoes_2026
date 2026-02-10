@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Plano de Dimensões 2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset e configurações gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        /* Container principal */
+        .container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Cabeçalho */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid #eaeaea;
+        }
+        
+        .logo {
+            font-size: 3.5rem;
+            color: #1a5fb4;
+            margin-bottom: 15px;
+        }
+        
+        h1 {
+            color: #1a5fb4;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: #5c6bc0;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        h2 {
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            color: #1a5fb4;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Texto introdutório */
+        .intro-text {
+            background-color: #f0f7ff;
+            border-left: 5px solid #1a5fb4;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 0 12px 12px 0;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .intro-text p {
+            margin-bottom: 15px;
+        }
+        
+        .intro-text p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Campo de nome */
+        .name-section {
+            background-color: #fff9e6;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 5px solid #ffb300;
+        }
+        
+        .name-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+        
+        .name-input:focus {
+            outline: none;
+            border-color: #1a5fb4;
+            box-shadow: 0 0 0 3px rgba(26, 95, 180, 0.2);
+        }
+        
+        /* Pergunta */
+        .question {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border: 2px solid #e0e0e0;
+            position: relative;
+        }
+        
+        .question h3 {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .question-icon {
+            color: #ff6b6b;
+            font-size: 1.8rem;
+        }
+        
+        /* Opções do formulário - DIMENSÕES VISÍVEIS */
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 80px;
+        }
+        
+        .option:hover {
+            background-color: #edf5ff;
+            border-color: #1a5fb4;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .option input {
+            margin-right: 20px;
+            transform: scale(1.5);
+            accent-color: #1a5fb4;
+            margin-top: 5px;
+        }
+        
+        .option label {
+            font-size: 1.15rem;
+            cursor: pointer;
+            flex: 1;
+            font-weight: 500;
+            color: #2d3748;
+            line-height: 1.5;
+        }
+        
+        .option-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background-color: #1a5fb4;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            margin-right: 12px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        /* Observação */
+        .note {
+            font-style: italic;
+            color: #718096;
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.1rem;
+            border: 1px dashed #cbd5e0;
+        }
+        
+        /* Botões */
+        .btn {
+            background-color: #1a5fb4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn:hover {
+            background-color: #0d4a9c;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background-color: #718096;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #4a5568;
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            background-color: #25D366;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #1da851;
+        }
+        
+        /* Mensagens */
+        .message {
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 1.2rem;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+        
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+        
+        /* Área administrativa */
+        .admin-section {
+            display: none;
+        }
+        
+        .admin-controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .password-input {
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        /* Botões de ação */
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        /* SEÇÃO WHATSAPP - DESIGN MELHORADO */
+        .whatsapp-preview-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            color: white;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .whatsapp-preview {
+            background-color: white;
+            border-radius: 20px;
+            padding: 0;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .whatsapp-header {
+            background-color: #075E54;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+        }
+        
+        .whatsapp-logo {
+            font-size: 2.5rem;
+            color: white;
+        }
+        
+        .whatsapp-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+        
+        .whatsapp-cover {
+            background: linear-gradient(135deg, #1a5fb4 0%, #0d4a9c 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .whatsapp-cover::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
+        
+        .whatsapp-cover h2 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cover-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .whatsapp-content {
+            padding: 20px;
+        }
+        
+        .whatsapp-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-item {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1a5fb4;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .dimension-rank {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .rank-title {
+            font-size: 1.1rem;
+            color: #1a5fb4;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .rank-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+        
+        .rank-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .rank-position {
+            width: 28px;
+            height: 28px;
+            background-color: #1a5fb4;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-right: 15px;
+        }
+        
+        .rank-name {
+            flex-grow: 1;
+            font-weight: 500;
+        }
+        
+        .rank-count {
+            font-weight: bold;
+            color: #1a5fb4;
+            font-size: 1.1rem;
+        }
+        
+        .whatsapp-footer {
+            background-color: #f0f7ff;
+            padding: 15px 20px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .share-options {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .share-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.95rem;
+            background-color: #f8f9fa;
+        }
+        
+        .copy-btn {
+            background-color: #718096;
+        }
+        
+        .copy-btn:hover {
+            background-color: #4a5568;
+        }
+        
+        .copy-success {
+            color: #155724;
+            font-weight: bold;
+            margin-top: 15px;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        /* Botão para limpar respostas */
+        .danger-btn {
+            background-color: #dc3545;
+        }
+        
+        .danger-btn:hover {
+            background-color: #c82333;
+        }
+        
+        /* Rodapé */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 2px solid #eaeaea;
+            color: #718096;
+            font-size: 0.95rem;
+        }
+        
+        /* Responsividade */
+        @media (min-width: 768px) {
+            .options-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .admin-controls, .action-buttons {
+                flex-direction: row;
+            }
+            
+            .whatsapp-stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .admin-controls, .action-buttons, .share-options {
+                flex-direction: column;
+            }
+            
+            .password-input, .share-input {
+                min-width: 100%;
+            }
+            
+            .whatsapp-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Formulário principal -->
+    <div class="container" id="quiz-container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+            <h1>Plano de Dimensões 2026</h1>
+            <p class="subtitle">Consulta à Equipe Pedagógica</p>
+            <p>Fortaleça o planejamento pedagógico da unidade</p>
+        </header>
+        
+        <div class="intro-text">
+            <p>"Com o objetivo de ouvir a equipe e fortalecer o planejamento do Plano de Dimensões – 2026, este quiz permitirá que cada profissional indique uma ou mais dimensões com as quais mais se identifica.</p>
+            <p>Ressaltamos que todas as dimensões fazem parte do trabalho pedagógico da unidade e que todos estarão envolvidos nas ações, mantendo o compromisso com a infância e com o trabalho pedagógico coletivo."</p>
+        </div>
+        
+        <form id="dimension-form">
+            <!-- Campo para nome -->
+            <div class="name-section">
+                <h3><i class="fas fa-user"></i> Identificação</h3>
+                <p>Por favor, informe seu nome para registrar sua participação:</p>
+                <input type="text" id="participant-name" class="name-input" placeholder="Digite seu nome completo" required>
+                <p style="margin-top: 10px; font-size: 0.95rem; color: #718096;">
+                    <i class="fas fa-info-circle"></i> Seu nome será registrado apenas para controle interno e não será compartilhado publicamente.
+                </p>
+            </div>
+            
+            <div class="question">
+                <h3><i class="fas fa-question-circle question-icon"></i> Quais dimensões você mais se identifica?</h3>
+            </div>
+            
+            <!-- CONTAINER DAS DIMENSÕES -->
+            <div class="options-container" id="options-container">
+                <!-- As opções serão geradas dinamicamente pelo JavaScript -->
+            </div>
+            
+            <div class="note">
+                <i class="fas fa-check-circle"></i> (Você pode marcar mais de uma opção.)
+            </div>
+            
+            <div id="message-container"></div>
+            
+            <div class="action-buttons">
+                <button type="submit" class="btn">
+                    <i class="fas fa-paper-plane"></i> Enviar Respostas
+                </button>
+                <button type="button" class="btn btn-secondary" id="admin-btn">
+                    <i class="fas fa-lock"></i> Acesso Administrativo
+                </button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Área administrativa -->
+    <div class="container admin-section" id="admin-container">
+        <header>
+            <h2><i class="fas fa-chart-bar"></i> Área Administrativa</h2>
+            <p>Visualize os resultados consolidados do quiz</p>
+        </header>
+        
+        <div id="login-section">
+            <h3>Acesso Restrito</h3>
+            <p>Esta área é restrita ao administrador. Insira a senha para continuar.</p>
+            
+            <div class="admin-controls">
+                <input type="password" id="admin-password" class="password-input" placeholder="Digite a senha de administrador">
+                <button type="button" class="btn" id="login-btn">
+                    <i class="fas fa-sign-in-alt"></i> Entrar
+                </button>
+                <button type="button" class="btn btn-secondary" id="back-to-quiz">
+                    <i class="fas fa-arrow-left"></i> Voltar ao Quiz
+                </button>
+            </div>
+            
+            <div id="admin-message"></div>
+        </div>
+        
+        <div id="results-section" style="display: none;">
+            <div class="admin-controls">
+                <button type="button" class="btn" id="export-csv">
+                    <i class="fas fa-file-csv"></i> Exportar CSV
+                </button>
+                <button type="button" class="btn whatsapp-btn" id="share-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Compartilhar Resultados
+                </button>
+                <button type="button" class="btn danger-btn" id="clear-data">
+                    <i class="fas fa-trash-alt"></i> Limpar Todas as Respostas
+                </button>
+                <button type="button" class="btn" id="refresh-data">
+                    <i class="fas fa-sync-alt"></i> Atualizar Dados
+                </button>
+                <button type="button" class="btn btn-secondary" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Sair
+                </button>
+            </div>
+            
+            <!-- SEÇÃO WHATSAPP COM DESIGN MELHORADO -->
+            <div class="whatsapp-preview-container">
+                <h3 style="color: white; text-align: center; margin-bottom: 20px;">
+                    <i class="fab fa-whatsapp"></i> Visualização para WhatsApp
+                </h3>
+                
+                <div class="whatsapp-preview" id="whatsapp-preview">
+                    <!-- Conteúdo será gerado dinamicamente -->
+                </div>
+                
+                <div style="text-align: center; margin-top: 20px;">
+                    <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">
+                        Esta é uma prévia visual. O texto formatado será gerado abaixo.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="share-options">
+                <input type="text" id="whatsapp-message" class="share-input" readonly placeholder="O texto formatado para WhatsApp será gerado aqui...">
+                <button type="button" class="btn copy-btn" id="copy-message">
+                    <i class="far fa-copy"></i> Copiar Texto
+                </button>
+                <button type="button" class="btn whatsapp-btn" id="send-whatsapp-web">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Web
+                </button>
+            </div>
+            
+            <div class="share-options">
+                <input type="text" id="whatsapp-number" class="share-input" placeholder="Enviar direto para número (ex: 5511999999999)">
+                <button type="button" class="btn whatsapp-btn" id="send-whatsapp-direct">
+                    <i class="fab fa-whatsapp"></i> Enviar Direto
+                </button>
+            </div>
+            
+            <p class="copy-success" id="copy-success">✅ Texto copiado para a área de transferência!</p>
+            
+            <!-- Resultados consolidados -->
+            <div class="results-container">
+                <h3>Resultados Consolidados</h3>
+                <p>Quantidade de marcações por dimensão:</p>
+                
+                <div class="results-grid" id="results-grid">
+                    <!-- Resultados serão gerados por JavaScript -->
+                </div>
+                
+                <h3>Todas as Respostas</h3>
+                <div id="all-responses">
+                    <!-- Tabela será gerada por JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Quiz do Plano de Dimensões 2026 • Desenvolvido para fortalecer o planejamento pedagógico</p>
+        <p>As respostas são confidenciais e serão usadas apenas para fins de planejamento.</p>
+    </footer>
+
+    <script>
+        // Configurações iniciais - DIMENSÕES DEFINIDAS
+        const DIMENSIONS = [
+            "Equipe e Gestão",
+            "Currículos, Interações e Práticas Pedagógicas",
+            "Comunidade e Família",
+            "Transição",
+            "Inclusão",
+            "Étnico-Racial",
+            "Sustentabilidade"
+        ];
+        
+        // Cores para cada dimensão
+        const DIMENSION_COLORS = [
+            "#1a5fb4", "#2e7d32", "#9c27b0", 
+            "#ff9800", "#2196f3", "#795548", "#4caf50"
+        ];
+        
+        // Senha do administrador
+        const ADMIN_PASSWORD = "dimensoes2026";
+        
+        // Chaves para armazenamento local
+        const STORAGE_KEY = "dimensionQuizResponses";
+        const SESSION_KEY = "dimensionQuizAdminLoggedIn";
+        
+        // Elementos DOM
+        const quizContainer = document.getElementById('quiz-container');
+        const adminContainer = document.getElementById('admin-container');
+        const adminBtn = document.getElementById('admin-btn');
+        const backToQuizBtn = document.getElementById('back-to-quiz');
+        const loginBtn = document.getElementById('login-btn');
+        const logoutBtn = document.getElementById('logout-btn');
+        const exportCsvBtn = document.getElementById('export-csv');
+        const refreshDataBtn = document.getElementById('refresh-data');
+        const clearDataBtn = document.getElementById('clear-data');
+        const shareWhatsAppBtn = document.getElementById('share-whatsapp');
+        const adminPasswordInput = document.getElementById('admin-password');
+        const optionsContainer = document.getElementById('options-container');
+        const dimensionForm = document.getElementById('dimension-form');
+        const participantNameInput = document.getElementById('participant-name');
+        const messageContainer = document.getElementById('message-container');
+        const adminMessage = document.getElementById('admin-message');
+        const loginSection = document.getElementById('login-section');
+        const resultsSection = document.getElementById('results-section');
+        const resultsGrid = document.getElementById('results-grid');
+        const allResponses = document.getElementById('all-responses');
+        const whatsappPreview = document.getElementById('whatsapp-preview');
+        const whatsappMessageInput = document.getElementById('whatsapp-message');
+        const copyMessageBtn = document.getElementById('copy-message');
+        const sendWhatsAppWebBtn = document.getElementById('send-whatsapp-web');
+        const sendWhatsAppDirectBtn = document.getElementById('send-whatsapp-direct');
+        const whatsappNumberInput = document.getElementById('whatsapp-number');
+        const copySuccess = document.getElementById('copy-success');
+        
+        // INICIALIZAÇÃO ZERO - SEM RESPOSTAS ANTIGAS
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("Iniciando NOVO quiz do Plano de Dimensões 2026...");
+            console.log("TODAS AS RESPOSTAS ANTERIORES FORAM EXCLUÍDAS!");
+            
+            // 1. Limpar TODAS as respostas antigas
+            localStorage.removeItem(STORAGE_KEY);
+            console.log("Armazenamento limpo - começando do zero!");
+            
+            // 2. Criar as opções do quiz
+            createQuizOptions();
+            
+            // 3. Configurar os eventos
+            setupEventListeners();
+            
+            // 4. Focar no campo de nome
+            participantNameInput.focus();
+            
+            console.log("Quiz NOVO inicializado com sucesso! Sem respostas anteriores.");
+        });
+        
+        // Função para criar as opções do quiz
+        function createQuizOptions() {
+            console.log("Criando opções do quiz...");
+            
+            // Limpar container primeiro
+            optionsContainer.innerHTML = '';
+            
+            // Criar uma opção para cada dimensão
+            DIMENSIONS.forEach((dimension, index) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'option';
+                optionDiv.id = `option-${index}`;
+                
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = `dimension-${index}`;
+                checkbox.name = 'dimension';
+                checkbox.value = dimension;
+                
+                const label = document.createElement('label');
+                label.htmlFor = `dimension-${index}`;
+                label.innerHTML = `<span class="option-number">${index + 1}</span> ${dimension}`;
+                
+                optionDiv.appendChild(checkbox);
+                optionDiv.appendChild(label);
+                optionsContainer.appendChild(optionDiv);
+                
+                // Tornar toda a div clicável
+                optionDiv.addEventListener('click', function(e) {
+                    if (e.target !== checkbox && e.target.tagName !== 'LABEL') {
+                        checkbox.checked = !checkbox.checked;
+                    }
+                });
+            });
+            
+            console.log(`${DIMENSIONS.length} opções criadas com sucesso!`);
+        }
+        
+        // Configurar eventos
+        function setupEventListeners() {
+            console.log("Configurando eventos...");
+            
+            // Botão administrativo
+            adminBtn.addEventListener('click', function() {
+                quizContainer.style.display = 'none';
+                adminContainer.style.display = 'block';
+            });
+            
+            // Botão voltar ao quiz
+            backToQuizBtn.addEventListener('click', function() {
+                quizContainer.style.display = 'block';
+                adminContainer.style.display = 'none';
+                adminMessage.innerHTML = '';
+            });
+            
+            // Login administrativo
+            loginBtn.addEventListener('click', function() {
+                const password = adminPasswordInput.value.trim();
+                
+                if (password === ADMIN_PASSWORD) {
+                    sessionStorage.setItem(SESSION_KEY, 'true');
+                    loginSection.style.display = 'none';
+                    resultsSection.style.display = 'block';
+                    refreshResults();
+                    updateWhatsAppPreview();
+                } else {
+                    adminMessage.innerHTML = '<div class="message error">Senha incorreta. Tente novamente.</div>';
+                    adminPasswordInput.focus();
+                }
+            });
+            
+            // Logout
+            logoutBtn.addEventListener('click', function() {
+                sessionStorage.removeItem(SESSION_KEY);
+                adminPasswordInput.value = '';
+                loginSection.style.display = 'block';
+                resultsSection.style.display = 'none';
+                adminMessage.innerHTML = '<div class="message success">Você saiu da área administrativa.</div>';
+            });
+            
+            // Exportar CSV
+            exportCsvBtn.addEventListener('click', exportToCSV);
+            
+            // Limpar TODAS as respostas
+            clearDataBtn.addEventListener('click', function() {
+                if (confirm('⚠️ ATENÇÃO: Esta ação irá apagar TODAS as respostas registradas. Esta ação não pode ser desfeita.\n\nDeseja continuar?')) {
+                    localStorage.removeItem(STORAGE_KEY);
+                    adminMessage.innerHTML = '<div class="message success">✅ Todas as respostas foram excluídas com sucesso! O quiz agora está zerado.</div>';
+                    refreshResults();
+                    updateWhatsAppPreview();
+                    
+                    // Atualizar também a área administrativa se estiver visível
+                    setTimeout(() => {
+                        adminMessage.innerHTML = '<div class="message success">Sistema reiniciado. Aguardando novas respostas.</div>';
+                    }, 3000);
+                }
+            });
+            
+            // Atualizar dados
+            refreshDataBtn.addEventListener('click', function() {
+                refreshResults();
+                updateWhatsAppPreview();
+            });
+            
+            // Compartilhar no WhatsApp
+            shareWhatsAppBtn.addEventListener('click', function() {
+                document.querySelector('.whatsapp-preview-container').scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+                updateWhatsAppPreview();
+            });
+            
+            // Copiar mensagem
+            copyMessageBtn.addEventListener('click', copyToClipboard);
+            
+            // WhatsApp Web
+            sendWhatsAppWebBtn.addEventListener('click', shareViaWhatsAppWeb);
+            
+            // WhatsApp Direto
+            sendWhatsAppDirectBtn.addEventListener('click', sendWhatsAppDirect);
+            
+            // Enviar formulário
+            dimensionForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validar nome
+                const name = participantNameInput.value.trim();
+                if (!name || name.length < 2) {
+                    showMessage('Por favor, informe seu nome completo.', 'error');
+                    participantNameInput.focus();
+                    return;
+                }
+                
+                // Obter dimensões selecionadas
+                const selectedDimensions = [];
+                const checkboxes = document.querySelectorAll('input[name="dimension"]:checked');
+                checkboxes.forEach(checkbox => {
+                    selectedDimensions.push(checkbox.value);
+                });
+                
+                // Validar seleção
+                if (selectedDimensions.length === 0) {
+                    showMessage('Por favor, selecione pelo menos uma dimensão.', 'error');
+                    return;
+                }
+                
+                // Criar resposta
+                const response = {
+                    name: name,
+                    timestamp: new Date().toISOString(),
+                    dimensions: selectedDimensions
+                };
+                
+                // Salvar resposta
+                saveResponse(response);
+                
+                // Mostrar mensagem de sucesso
+                showMessage(`Obrigado por participar, ${name}! Sua resposta foi registrada.`, 'success');
+                
+                // Limpar formulário
+                dimensionForm.reset();
+                
+                // Scroll para topo
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Enter no campo de senha
+            adminPasswordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    loginBtn.click();
+                }
+            });
+            
+            // Enter no campo de número WhatsApp
+            whatsappNumberInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendWhatsAppDirect();
+                }
+            });
+            
+            console.log("Eventos configurados com sucesso!");
+        }
+        
+        // Atualizar resultados
+        function refreshResults() {
+            const responses = getResponses();
+            
+            if (responses.length === 0) {
+                resultsGrid.innerHTML = '<p class="note">Nenhuma resposta registrada ainda. O quiz está zerado e pronto para novas respostas.</p>';
+                allResponses.innerHTML = '<p class="note">Nenhuma resposta registrada ainda.</p>';
+                return;
+            }
+            
+            // Calcular contagens
+            const dimensionCounts = {};
+            DIMENSIONS.forEach(dimension => {
+                dimensionCounts[dimension] = 0;
+            });
+            
+            responses.forEach(response => {
+                response.dimensions.forEach(dimension => {
+                    if (dimensionCounts.hasOwnProperty(dimension)) {
+                        dimensionCounts[dimension]++;
+                    }
+                });
+            });
+            
+            // Mostrar contagens
+            resultsGrid.innerHTML = '';
+            DIMENSIONS.forEach((dimension, index) => {
+                const count = dimensionCounts[dimension] || 0;
+                const percentage = responses.length > 0 ? Math.round((count / responses.length) * 100) : 0;
+                
+                const card = document.createElement('div');
+                card.className = 'result-card';
+                card.style.cssText = `
+                    background-color: #f8f9fa;
+                    padding: 20px;
+                    border-radius: 10px;
+                    margin-bottom: 15px;
+                    border-left: 5px solid ${DIMENSION_COLORS[index]};
+                `;
+                card.innerHTML = `
+                    <h4 style="margin-bottom: 10px; color: ${DIMENSION_COLORS[index]};">${dimension}</h4>
+                    <div style="font-size: 2rem; font-weight: bold; color: #333;">${count}</div>
+                    <p>seleções (${percentage}% dos participantes)</p>
+                    <div style="height: 8px; background: #e0e0e0; border-radius: 4px; margin-top: 10px; overflow: hidden;">
+                        <div style="width: ${percentage}%; height: 100%; background-color: ${DIMENSION_COLORS[index]};"></div>
+                    </div>
+                `;
+                resultsGrid.appendChild(card);
+            });
+            
+            // Mostrar tabela com todas as respostas
+            displayAllResponses(responses);
+        }
+        
+        // Atualizar preview do WhatsApp
+        function updateWhatsAppPreview() {
+            const responses = getResponses();
+            
+            if (responses.length === 0) {
+                whatsappPreview.innerHTML = `
+                    <div class="whatsapp-header">
+                        <div class="whatsapp-logo">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="whatsapp-title">Plano de Dimensões 2026</div>
+                    </div>
+                    <div class="whatsapp-cover">
+                        <h2>📊 NOVA CONSULTA</h2>
+                        <p class="cover-subtitle">Planejamento Pedagógico 2026</p>
+                    </div>
+                    <div class="whatsapp-content">
+                        <div style="text-align: center; padding: 30px;">
+                            <p style="font-size: 1.1rem; color: #666;">
+                                <i class="fas fa-hourglass-start" style="font-size: 2rem; color: #1a5fb4; margin-bottom: 15px; display: block;"></i>
+                                Consulta iniciada - aguardando participação
+                            </p>
+                        </div>
+                    </div>
+                    <div class="whatsapp-footer">
+                        <p>📅 ${new Date().toLocaleDateString('pt-BR')}</p>
+                        <p>📍 Nova consulta à equipe pedagógica</p>
+                    </div>
+                `;
+                whatsappMessageInput.value = `📊 *PLANO DE DIMENSÕES 2026*\n\n🏫 *NOVA CONSULTA INICIADA*\n\nA consulta à equipe pedagógica para o Plano de Dimensões 2026 foi iniciada.\n\n📅 Data de início: ${new Date().toLocaleDateString('pt-BR')}\n👥 Aguardando participação da equipe\n\n_Esta é uma nova consulta. Todas as respostas anteriores foram zeradas._\n\n#PlanoDimensões2026 #Educação #NovaConsulta`;
+                return;
+            }
+            
+            // Calcular estatísticas
+            const dimensionCounts = {};
+            DIMENSIONS.forEach(dim => dimensionCounts[dim] = 0);
+            
+            responses.forEach(r => {
+                r.dimensions.forEach(dim => dimensionCounts[dim]++);
+            });
+            
+            // Ordenar dimensões por popularidade
+            const sortedDimensions = [...DIMENSIONS].sort((a, b) => dimensionCounts[b] - dimensionCounts[a]);
+            
+            // Calcular totais
+            const totalSelections = Object.values(dimensionCounts).reduce((a, b) => a + b, 0);
+            const mostSelected = sortedDimensions[0];
+            const leastSelected = sortedDimensions[sortedDimensions.length - 1];
+            
+            // Criar preview visual
+            whatsappPreview.innerHTML = `
+                <div class="whatsapp-header">
+                    <div class="whatsapp-logo">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="whatsapp-title">Plano de Dimensões 2026</div>
+                </div>
+                <div class="whatsapp-cover">
+                    <h2>📊 RESULTADOS PARCIAIS</h2>
+                    <p class="cover-subtitle">Planejamento Pedagógico 2026</p>
+                </div>
+                <div class="whatsapp-content">
+                    <div class="whatsapp-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">${responses.length}</div>
+                            <div class="stat-label">Participantes</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">${totalSelections}</div>
+                            <div class="stat-label">Total de seleções</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">${new Date().getDate()}/${new Date().getMonth()+1}</div>
+                            <div class="stat-label">Atualizado em</div>
+                        </div>
+                    </div>
+                    
+                    <div class="dimension-rank">
+                        <div class="rank-title">
+                            <i class="fas fa-trophy"></i> Ranking das Dimensões
+                        </div>
+                        ${sortedDimensions.slice(0, 5).map((dim, index) => {
+                            const count = dimensionCounts[dim];
+                            const percentage = Math.round((count / responses.length) * 100);
+                            const medal = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : '🔸';
+                            
+                            return `
+                            <div class="rank-item">
+                                <div class="rank-position">${medal}</div>
+                                <div class="rank-name">${dim}</div>
+                                <div class="rank-count">${count}</div>
+                            </div>
+                            `;
+                        }).join('')}
+                    </div>
+                    
+                    <div style="background-color: #e8f5e9; padding: 15px; border-radius: 10px; margin-top: 20px;">
+                        <p style="margin: 0; color: #2e7d32; font-weight: bold;">
+                            <i class="fas fa-chart-line"></i> Dimensão mais selecionada: <span style="color: #1a5fb4;">${mostSelected}</span> (${dimensionCounts[mostSelected]} seleções)
+                        </p>
+                    </div>
+                </div>
+                <div class="whatsapp-footer">
+                    <p>📅 ${new Date().toLocaleDateString('pt-BR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                    <p>📍 Consulta em andamento - ${responses.length} participante(s)</p>
+                </div>
+            `;
+            
+            // Atualizar mensagem para WhatsApp
+            updateWhatsAppMessage();
+        }
+        
+        // Atualizar mensagem WhatsApp
+        function updateWhatsAppMessage() {
+            const responses = getResponses();
+            
+            if (responses.length === 0) {
+                whatsappMessageInput.value = `📊 *PLANO DE DIMENSÕES 2026*\n\n🏫 *NOVA CONSULTA INICIADA*\n\nA consulta à equipe pedagógica para o Plano de Dimensões 2026 foi iniciada.\n\n📅 Data de início: ${new Date().toLocaleDateString('pt-BR')}\n👥 Aguardando participação da equipe\n\n_Esta é uma nova consulta. Todas as respostas anteriores foram zeradas._\n\n#PlanoDimensões2026 #Educação #NovaConsulta`;
+                return;
+            }
+            
+            // Calcular estatísticas
+            const dimensionCounts = {};
+            DIMENSIONS.forEach(dim => dimensionCounts[dim] = 0);
+            
+            responses.forEach(r => {
+                r.dimensions.forEach(dim => dimensionCounts[dim]++);
+            });
+            
+            const sortedDimensions = [...DIMENSIONS].sort((a, b) => dimensionCounts[b] - dimensionCounts[a]);
+            const totalSelections = Object.values(dimensionCounts).reduce((a, b) => a + b, 0);
+            
+            // Criar mensagem formatada para WhatsApp
+            let message = `📊 *RESULTADOS PARCIAIS - PLANO DE DIMENSÕES 2026*\n`;
+            message += `_Consulta à equipe pedagógica (em andamento)_\n\n`;
+            message += `👥 *Participantes até o momento:* ${responses.length}\n`;
+            message += `📍 *Total de seleções:* ${totalSelections}\n`;
+            message += `📅 *Atualizado em:* ${new Date().toLocaleDateString('pt-BR')}\n\n`;
+            
+            message += `🏆 *TOP 5 DIMENSÕES:*\n\n`;
+            
+            sortedDimensions.slice(0, 5).forEach((dim, index) => {
+                const count = dimensionCounts[dim];
+                const percentage = Math.round((count / responses.length) * 100);
+                const medal = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : '▫️';
+                
+                message += `${medal} *${dim}*\n`;
+                message += `   ${count} seleções (${percentage}% dos participantes)\n\n`;
+            });
+            
+            message += `📈 *Resumo parcial:*\n`;
+            message += `• Mais selecionada: ${sortedDimensions[0]} (${dimensionCounts[sortedDimensions[0]]} seleções)\n`;
+            message += `• Total de dimensões avaliadas: ${DIMENSIONS.length}\n`;
+            message += `• Média por participante: ${(totalSelections / responses.length).toFixed(1)}\n\n`;
+            
+            message += `_Relatório parcial gerado automaticamente pelo sistema de consulta._\n`;
+            message += `#PlanoDimensões2026 #Educação #ConsultaEmAndamento`;
+            
+            whatsappMessageInput.value = message;
+        }
+        
+        // Copiar para área de transferência
+        function copyToClipboard() {
+            whatsappMessageInput.select();
+            whatsappMessageInput.setSelectionRange(0, 99999);
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    copySuccess.style.display = 'block';
+                    setTimeout(() => {
+                        copySuccess.style.display = 'none';
+                    }, 3000);
+                }
+            } catch (err) {
+                console.error('Falha ao copiar: ', err);
+                adminMessage.innerHTML = '<div class="message error">Não foi possível copiar o texto. Tente manualmente.</div>';
+            }
+        }
+        
+        // Compartilhar via WhatsApp Web
+        function shareViaWhatsAppWeb() {
+            const message = whatsappMessageInput.value;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://web.whatsapp.com/send?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+        }
+        
+        // Enviar direto para número
+        function sendWhatsAppDirect() {
+            const phoneNumber = whatsappNumberInput.value.trim();
+            
+            if (!phoneNumber) {
+                adminMessage.innerHTML = '<div class="message error">Por favor, insira um número de WhatsApp.</div>';
+                whatsappNumberInput.focus();
+                return;
+            }
+            
+            const phoneRegex = /^\d{10,}$/;
+            if (!phoneRegex.test(phoneNumber)) {
+                adminMessage.innerHTML = '<div class="message error">Número inválido. Use apenas dígitos (ex: 5511999999999).</div>';
+                whatsappNumberInput.focus();
+                return;
+            }
+            
+            const message = whatsappMessageInput.value;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+        }
+        
+        // Exibir todas as respostas
+        function displayAllResponses(responses) {
+            let tableHTML = `
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                        <thead>
+                            <tr style="background-color: #f2f6fc;">
+                                <th style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #ddd; color: #1a5fb4;">Nome</th>
+                                <th style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #ddd; color: #1a5fb4;">Data/Hora</th>
+                                ${DIMENSIONS.map(dim => `
+                                    <th style="padding: 12px 15px; text-align: center; border-bottom: 1px solid #ddd; color: #1a5fb4;">${dim}</th>
+                                `).join('')}
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+            
+            responses.forEach(response => {
+                tableHTML += `
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 12px 15px;"><strong>${response.name}</strong></td>
+                        <td style="padding: 12px 15px;">${new Date(response.timestamp).toLocaleString('pt-BR')}</td>
+                `;
+                
+                DIMENSIONS.forEach(dimension => {
+                    const checked = response.dimensions.includes(dimension) ? '✓' : '';
+                    tableHTML += `<td style="padding: 12px 15px; text-align: center;">${checked}</td>`;
+                });
+                
+                tableHTML += `</tr>`;
+            });
+            
+            tableHTML += `
+                        </tbody>
+                    </table>
+                </div>
+                <p class="note" style="margin-top:10px;">Total de respostas: ${responses.length}</p>
+            `;
+            
+            allResponses.innerHTML = tableHTML;
+        }
+        
+        // Exportar CSV
+        function exportToCSV() {
+            const responses = getResponses();
+            
+            if (responses.length === 0) {
+                alert('Não há dados para exportar.');
+                return;
+            }
+            
+            let csv = 'Nome,Data/Hora,' + DIMENSIONS.join(',') + '\n';
+            
+            responses.forEach(response => {
+                const date = new Date(response.timestamp).toLocaleString('pt-BR');
+                const row = `"${response.name}","${date}",` + 
+                    DIMENSIONS.map(dim => 
+                        response.dimensions.includes(dim) ? '"Sim"' : '""'
+                    ).join(',');
+                csv += row + '\n';
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.setAttribute('href', url);
+            link.setAttribute('download', `respostas_dimensoes_${new Date().toISOString().slice(0,10)}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            adminMessage.innerHTML = '<div class="message success">Arquivo CSV exportado com sucesso!</div>';
+        }
+        
+        // Salvar resposta
+        function saveResponse(response) {
+            const responses = getResponses();
+            responses.push(response);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(responses));
+        }
+        
+        // Obter respostas
+        function getResponses() {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            return stored ? JSON.parse(stored) : [];
+        }
+        
+        // Mostrar mensagem
+        function showMessage(text, type) {
+            messageContainer.innerHTML = `
+                <div class="message ${type}">
+                    <p>${text}</p>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                messageContainer.innerHTML = '';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
